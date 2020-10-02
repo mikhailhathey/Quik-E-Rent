@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_height="wrap_content"
+    android:layout_width="fill_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    tools:context=".activity.customer.RentPowerToolActivity">
+
+        <EditText
+            android:id="@+id/RentPowerToolBrandEditText"
+            android:layout_height="wrap_content"
+            android:hint="@string/RentPowerToolBrandFilterHint"
+            android:layout_width="fill_parent">
+        </EditText>
+
+        <EditText
+            android:id="@+id/RentPowerToolPowerToolNameEditText"
+            android:layout_height="wrap_content"
+            android:hint="@string/RentPowerToolPowerToolNameFilterHint"
+            android:layout_width="fill_parent">
+        </EditText>
+
+        <EditText
+            android:id="@+id/RentPowerToolYearEditText"
+            android:layout_height="wrap_content"
+            android:hint="@string/RentPowerToolYearFilterHint"
+            android:layout_width="fill_parent">
+        </EditText>
+
+        <ProgressBar
+            android:id="@+id/RentPowerToolProgressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <ListView
+            android:id="@+id/RentPowerToolListView"
+            android:layout_height="fill_parent"
+            android:layout_width="fill_parent">
+        </ListView>
+
+    </LinearLayout>

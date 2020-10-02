@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="wrap_content"
+    android:layout_width="fill_parent"
+    android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/AddPowerToolPowerToolNameLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/addPowerToolPowerToolName"
+            android:textSize="10pt">
+        </TextView>
+
+        <EditText
+            android:id="@+id/AddPowerToolBrandEditText"
+            android:layout_height="wrap_content"
+            android:hint="@string/addPowerToolBrandHint"
+            android:layout_width="fill_parent"
+            android:autofillHints="">
+        </EditText>
+
+        <EditText
+            android:id="@+id/AddPowerToolPowerToolNameEditText"
+            android:layout_height="wrap_content"
+            android:hint="@string/addPowerToolPowerToolNameHint"
+            android:layout_width="fill_parent"
+            android:autofillHints=""
+            android:inputType="text">
+        </EditText>
+
+        <EditText
+            android:id="@+id/AddPowerToolYearEditText"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints=""
+            android:hint="@string/addPowerToolYearHint"
+            android:inputType="number">
+        </EditText>
+
+        <Button
+            android:id="@+id/AddPowerToolSubmit"
+            android:layout_height="wrap_content"
+            android:text="@string/addPowerToolSubmitText"
+            android:onClick="submitListener"
+            android:layout_width="fill_parent">
+        </Button>
+
+</LinearLayout>

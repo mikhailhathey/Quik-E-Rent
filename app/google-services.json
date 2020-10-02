@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "47445342388",
+    "firebase_url": "https://quik-e-rent.firebaseio.com",
+    "project_id": "quik-e-rent",
+    "storage_bucket": "quik-e-rent.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:47445342388:android:f535f771e2048e238f7fe1",
+        "android_client_info": {
+          "package_name": "project.quikERent"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "47445342388-iv1bui9pd3eck1ofkgrsv517nu7vieju.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "project.quikERent",
+            "certificate_hash": "afe5a6075bc6e405abc6ecf3d435f3954e0e2a86"
+          }
+        },
+        {
+          "client_id": "47445342388-vhitbpod535i8irv760pp0qpqf45chms.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBn_IdrjlvZO73nO--VTjmRAo0ZGQh-y0o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "47445342388-vhitbpod535i8irv760pp0qpqf45chms.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
