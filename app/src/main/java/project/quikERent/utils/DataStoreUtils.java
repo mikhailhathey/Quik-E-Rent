@@ -1,6 +1,6 @@
 package project.quikERent.utils;
 
-import org.apache.commons.collections4.CollectionUtils;
+import com.google.android.gms.common.util.CollectionUtils;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -21,7 +21,7 @@ public class DataStoreUtils {
     public static List<PowerToolModel> readPowerTools(Object list) {
         final List<Object> listOfPowerTools = (List) list;
         List<PowerToolModel> powerTools = new ArrayList<>();
-        if (CollectionUtils.isNotEmpty(listOfPowerTools)) {
+        if (!CollectionUtils.isEmpty(listOfPowerTools)) {
             for (Object field : listOfPowerTools) {
                 if (field == null) {
                     continue;
@@ -41,16 +41,16 @@ public class DataStoreUtils {
         //final List<Object> listOfRentedPowerTools = (List) list;
         final List<Object> listOfRentedPowerTools = Arrays.asList((((HashMap) list).values().toArray()));
         List<RentedPowerToolModel> powerTools = new ArrayList<>();
-        if (CollectionUtils.isNotEmpty(listOfRentedPowerTools)) {
+        if (!CollectionUtils.isEmpty(listOfRentedPowerTools)) {
             for (Object field : listOfRentedPowerTools) {
                 if (field == null) {
                     continue;
                 }
                 HashMap<String, Object> fields = (HashMap<String, Object>) field;
                 Long powerToolId = (Long) fields.get("powerToolId");
-                String userId = (String) fields.get("userId");
+                String uid = (String) fields.get("uid");
                 Date datetime = new Date((Long) ((HashMap) fields.get("rentDate")).get("time"));
-                powerTools.add(new RentedPowerToolModel(powerToolId, userId, datetime));
+                powerTools.add(new RentedPowerToolModel(powerToolId, uid, datetime));
             }
         }
         return powerTools;
@@ -60,7 +60,7 @@ public class DataStoreUtils {
         //final List<Object> listOfRentedPowerTools = (List) list;
         final List<Object> listOfRentedPowerTools = Arrays.asList((((HashMap) list).values().toArray()));
         List<SuggestPowerToolModel> requests = new ArrayList<>();
-        if (CollectionUtils.isNotEmpty(listOfRentedPowerTools)) {
+        if (!CollectionUtils.isEmpty(listOfRentedPowerTools)) {
             for (Object field : listOfRentedPowerTools) {
                 if (field == null) {
                     continue;
@@ -81,18 +81,18 @@ public class DataStoreUtils {
         final List<Object> listOfConfirmations = Arrays.asList((((HashMap) list).values().toArray()));
         List<ConfirmationPowerToolModel> confirmations = new ArrayList<>();
         Date now = new Date();
-        if (CollectionUtils.isNotEmpty(listOfConfirmations)) {
+        if (!CollectionUtils.isEmpty(listOfConfirmations)) {
             for (Object field : listOfConfirmations) {
                 if (field == null) {
                     continue;
                 }
                 HashMap<String, Object> fields = (HashMap<String, Object>) field;
                 Long powerToolId = (Long) fields.get("powerToolId");
-                String userId = (String) fields.get("userId");
+                String uid = (String) fields.get("uid");
                 ConfirmationType type = ConfirmationType.valueOf((String) fields.get("type"));
                 Date datetime = new Date((Long) ((HashMap) fields.get("datetime")).get("time"));
                 if (datetime.after(now))
-                    confirmations.add(new ConfirmationPowerToolModel(powerToolId, userId, type, datetime));
+                    confirmations.add(new ConfirmationPowerToolModel(powerToolId, uid, type, datetime));
             }
         }
         return confirmations;
@@ -101,7 +101,7 @@ public class DataStoreUtils {
     public static List<UserModel> readUsers(Object list) {
         final List<Object> listOfUsers = Arrays.asList((((HashMap) list).values().toArray()));
         List<UserModel> users = new ArrayList<>();
-        if (CollectionUtils.isNotEmpty(listOfUsers)) {
+        if (!CollectionUtils.isEmpty(listOfUsers)) {
             for (Object field : listOfUsers) {
                 if (field == null) {
                     continue;

@@ -19,8 +19,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import org.apache.commons.collections4.CollectionUtils;
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -158,7 +156,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 boolean isAdmin = false;
 
-                /*if (CollectionUtils.isNotEmpty((List) dataSnapshot.getValue())) {
+                /*if (!CollectionUtils.isEmpty((List) dataSnapshot.getValue())) {
                     for (Object field : (List) dataSnapshot.getValue()) {
                         if (field != null) {
                             final HashMap<String, Object> fields = (HashMap<String, Object>) field;
@@ -174,7 +172,6 @@ public class MainActivity extends AppCompatActivity {
                 for (DataSnapshot adminUserSnapshot: dataSnapshot.getChildren()) {
                     final String email = (String) adminUserSnapshot.getValue();
                     AdminUserModel adminUserModel = new AdminUserModel(email);
-                    //Log.d("Failed", (String) adminUserSnapshot.getValue());
 
                     if (FirebaseAuth.getInstance().getCurrentUser().getEmail().equalsIgnoreCase(adminUserModel.getEmail())) {
                         isAdmin = true;

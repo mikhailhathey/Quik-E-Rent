@@ -19,7 +19,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
-import org.apache.commons.collections4.CollectionUtils;
+
 
 import java.util.Calendar;
 import java.util.Date;
@@ -53,13 +53,14 @@ public class CheckStatePowerToolActivity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
         IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
         if (result != null) {
             //if qrcode has nothing in it
             if (result.getContents() == null) {
                 Toast.makeText(this, "Result Not Found", Toast.LENGTH_LONG).show();
-            } else if(result.getContents().startsWith(SOUL)){
-                final String powerToolId = result.getContents().replace(SOUL,"");
+            } else if (result.getContents().startsWith(SOUL)) {
+                final String powerToolId = result.getContents().replace(SOUL, "");
                 final DatabaseReference powerToolsRef = FirebaseDatabase.getInstance().getReference("borrowed_powerTools");
                 powerToolsRef.addValueEventListener(new ValueEventListener() {
                     @Override
@@ -68,17 +69,17 @@ public class CheckStatePowerToolActivity extends AppCompatActivity {
                         if (dataSnapshot.getValue() == null) {
                             return;
                         }
-                        HashMap<String,Object> mapEntries = (HashMap<String,Object>) dataSnapshot.getValue();
-                        HashMap<String,Object> powerTool = (HashMap<String,Object>) mapEntries.get(powerToolId);
-                        if(powerTool!=null){
+                        HashMap<String, Object> mapEntries = (HashMap<String, Object>) dataSnapshot.getValue();
+                        HashMap<String, Object> powerTool = (HashMap<String, Object>) mapEntries.get(powerToolId);
+                        if (powerTool != null) {
                             AlertDialog.Builder builder = new AlertDialog.Builder(activity);
                             Date date = dataSnapshot.child(powerToolId).getValue(RentedPowerToolModel.class).getRentedDate();
                             Calendar calendar = Calendar.getInstance();
                             calendar.setTime(date);
-                            calendar.add(Calendar.DAY_OF_YEAR,1);
+                            calendar.add(Calendar.DAY_OF_YEAR, 1);
                             Date untilDate = calendar.getTime();
                             builder.setTitle("PowerTool already borrowed!")
-                                    .setMessage("This powerTool is already borrowed by" + usersMap.get(powerTool.get("userId")).getEmail() +" until " + untilDate)
+                                    .setMessage("This powerTool is already borrowed by" + usersMap.get(powerTool.get("userId")).getEmail() + " until " + untilDate)
                                     .setPositiveButton("Continue scanning!", new DialogInterface.OnClickListener() {
                                         public void onClick(DialogInterface dialog, int which) {
                                             qrScan.initiateScan();
@@ -98,13 +99,13 @@ public class CheckStatePowerToolActivity extends AppCompatActivity {
                                     if (dataSnapshot.getValue() == null) {
                                         return;
                                     }
-                                    HashMap<String,Object> mapEntries = (HashMap<String,Object>) dataSnapshot.getValue();
-                                    HashMap<String,Object> powerTool = (HashMap<String,Object>) mapEntries.get(powerToolId);
-                                    if(powerTool!=null){
+                                    HashMap<String, Object> mapEntries = (HashMap<String, Object>) dataSnapshot.getValue();
+                                    HashMap<String, Object> powerTool = (HashMap<String, Object>) mapEntries.get(powerToolId);
+                                    if (powerTool != null) {
                                         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
                                         Date date = dataSnapshot.child(powerToolId).getValue(ConfirmationPowerToolModel.class).getDatetime();
                                         builder.setTitle("PowerTool already reserved!")
-                                                .setMessage("This powerTool is already reserved by" + usersMap.get(powerTool.get("userId")).getEmail() +" until " + date)
+                                                .setMessage("This powerTool is already reserved by" + usersMap.get(powerTool.get("userId")).getEmail() + " until " + date)
                                                 .setPositiveButton("Continue scanning!", new DialogInterface.OnClickListener() {
                                                     public void onClick(DialogInterface dialog, int which) {
                                                         qrScan.initiateScan();
@@ -117,7 +118,7 @@ public class CheckStatePowerToolActivity extends AppCompatActivity {
                                                 }).show();
                                     } else {
                                         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
-                                        if(isAdmin) {
+                                        if (isAdmin) {
                                             builder.setTitle("PowerTool is available!")
                                                     .setMessage("PowerTool is available.")
                                                     .setPositiveButton("Continue scanning!", new DialogInterface.OnClickListener() {

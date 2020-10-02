@@ -270,9 +270,9 @@ public class RentPowerToolActivity extends AppCompatActivity {
             button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    final String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                    final String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
                     final ConfirmationPowerToolModel model = new ConfirmationPowerToolModel();
-                    model.setUserId(userId);
+                    model.setUserId(uid);
                     model.setPowerToolId(powerTool.getId());
                     model.setType(ConfirmationType.RENT);
                     Date now = new Date();
